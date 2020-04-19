@@ -7,7 +7,7 @@ int main()
 
 	if (!file) 
 	{
-		std::cout << "Fail to open source/input";
+		std::cout << "Fail to open source/input \n";
 		return 1;
 	}
 }
