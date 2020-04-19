@@ -3,7 +3,7 @@
 
 int main()
 {
-	ifstream file("source/input");
+	std::ifstream file("source/input");
 
 	if (!file) 
 	{
