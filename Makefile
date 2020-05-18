@@ -23,10 +23,13 @@ build/Moves.o: src/Moves.cpp
 	g++ -c -Wall -Werror -o build/Moves.o \
     src/Moves.cpp
 
+format:
+	clang-format -i src/*.cpp src/*.h
+
 install:
 	sudo install ./bin/chessviz /usr/local/bin
 
 uninstall:
 	sudo rm -rf /usr/local/bin/chessviz
 
-.PHONY: all
+.PHONY: all install uninstall format
