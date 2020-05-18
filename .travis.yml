@@ -1,3 +1,9 @@
+language: cpp
+
+compiler:
+  - g++
+  - clang++
+
 # Используем дистрибутив Ubuntu 16.04,
 # т.к. в образе предустановлен clang-format версии 7.
 dist: xenial
