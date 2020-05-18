@@ -8,7 +8,6 @@
 
 short Moves::Ctoi(char position)
 {
-	stab();
     switch (position) {
     case 'a':
         return 0;
