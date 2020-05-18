@@ -2,7 +2,6 @@
 
 #include <vector>
 #include <cctype>
-#include <iostream>
 
 class Board
 {
@@ -11,12 +10,10 @@ public:
     Board();
     ~Board();
 
-    void Print();
+    short x, y;
+    char** board;
 
 private:
 
     void ArrangeChess();
-
-    short x, y;
-    char** board;
 };
