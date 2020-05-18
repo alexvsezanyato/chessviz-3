@@ -1,4 +1,5 @@
 #include "Board.h"
+#include <iostream>
 
 Board::Board() : x(8), y(8)
 {
@@ -28,4 +29,51 @@ void Board::ArrangeChess()
         for (short j = 2; j <= 5; ++j) board[j][i] = '=';
     }
     return;
+}
+
+bool Board::MoveChess(short from[], short to[])
+{
+	if (from[0] >= x || from[0] < 0)
+		if (from[1] >= y || from[1] < 0)
+			return false;
+
+	if (to[0] >= x || to[0] < 0)
+    		if (to[1] >= y || to[1] < 0)
+    			return false;
+
+	board[to[0]][to[1]] = board[from[0]][from[1]];
+	board[from[0]][from[1]] = '=';
+	return true;
+}
+
+bool IsChess(char symbol)
+{
+	switch (symbol)
+	{
+	case 'K': case 'Q': case 'R': case 'B': case 'N': return true;
+	default: return false;
+	}
+}
+
+bool Board::MoveChess(short from[], short to[], char postfix)
+{
+	if (from[0] >= x || from[0] < 0)
+		if (from[1] >= y || from[1] < 0)
+			return false;
+
+	if (to[0] >= x || to[0] < 0)
+    	if (to[1] >= y || to[1] < 0)
+    		return false;
+
+	if (IsChess(postfix))
+	{
+		board[to[0]][to[1]] = postfix;
+        board[from[0]][from[1]] = '=';
+	}
+	else
+	{
+		board[to[0]][to[1]] = board[from[0]][from[1]];
+        board[from[0]][from[1]] = '=';
+	}
+	return true;
 }

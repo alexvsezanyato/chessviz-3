@@ -9,7 +9,7 @@ class PlainBoardPrinter
 public:
 
 	PlainBoardPrinter(Board* board);
-	void Print();
+	void PrintBoard();
 
 private:
 

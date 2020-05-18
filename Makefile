@@ -1,10 +1,11 @@
 all: chessviz
 
-chessviz: build/Main.o build/Board.o build/PlainBoardPrinter.o
+chessviz: build/Main.o build/Board.o build/PlainBoardPrinter.o build/Moves.o
 	g++ -Wall -Werror -o bin/chessviz \
 	build/Main.o \
 	build/Board.o \
-	build/PlainBoardPrinter.o
+	build/PlainBoardPrinter.o \
+	build/Moves.o
 
 build/Main.o: src/Main.cpp
 	g++ -c -Wall -Werror -o build/Main.o \
@@ -17,6 +18,10 @@ build/Board.o: src/Board.cpp
 build/PlainBoardPrinter.o: src/PlainBoardPrinter.cpp
 	g++ -c -Wall -Werror -o build/PlainBoardPrinter.o \
 	src/PlainBoardPrinter.cpp
+
+build/Moves.o: src/Moves.cpp
+	g++ -c -Wall -Werror -o build/Moves.o \
+    src/Moves.cpp
 
 install:
 	sudo install ./bin/chessviz /usr/local/bin
