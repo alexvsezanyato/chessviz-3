@@ -1,12 +1,10 @@
 #pragma once
 
-#include <vector>
 #include <cctype>
+#include <vector>
 
-class Board
-{
+class Board {
 public:
-
     Board();
     ~Board();
 
@@ -17,6 +15,5 @@ public:
     char** board;
 
 private:
-
     void ArrangeChess();
 };

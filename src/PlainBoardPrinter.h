@@ -1,17 +1,14 @@
 #pragma once
 
-#include <iostream>
 #include "Board.h"
+#include <iostream>
 // ..
 
-class PlainBoardPrinter
-{
+class PlainBoardPrinter {
 public:
-
-	PlainBoardPrinter(Board* board);
-	void PrintBoard();
+    PlainBoardPrinter(Board* board);
+    void PrintBoard();
 
 private:
-
-	Board* board;
+    Board* board;
 };

@@ -1,27 +1,24 @@
 #pragma once
 
-#include <vector>
+#include "Move.h"
+#include <fstream>
 #include <regex>
 #include <string>
-#include <fstream>
-#include "Move.h"
+#include <vector>
 // ..
 
-class Moves
-{
+class Moves {
 public:
+    Moves(std::string path);
+    bool Read();
+    void ParseRegex(std::smatch* parts, Move* move1, Move* move2);
+    Move At(short position);
+    short Ctoi(char position);
 
-	Moves(std::string path);
-	bool Read();
-	void ParseRegex(std::smatch* parts, Move* move1, Move* move2);
-	Move At(short position);
-	short Ctoi(char position);
-
-	short count = 0;
+    short count = 0;
 
 private:
-
-	std::ifstream stream;
-	std::string path;
-	std::vector<Move> moves;
+    std::ifstream stream;
+    std::string path;
+    std::vector<Move> moves;
 };
