@@ -1,22 +1,19 @@
 #pragma once
 
-#include <vector>
 #include <cctype>
-#include <iostream>
+#include <vector>
 
-class Board
-{
+class Board {
 public:
-
     Board();
     ~Board();
 
-    void Print();
-
-private:
-
-    void ArrangeChess();
+    bool MoveChess(short* from, short* to, char postfix);
+    bool MoveChess(short* from, short* to);
 
     short x, y;
     char** board;
+
+private:
+    void ArrangeChess();
 };
