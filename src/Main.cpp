@@ -2,6 +2,7 @@
 #include "Moves.h"
 #include "PlainBoardPrinter.h"
 #include <iostream>
+#include <string>
 
 int main(int argc, char* argv[])
 {
@@ -18,9 +19,12 @@ int main(int argc, char* argv[])
 
     for (short i = 0; i < moves.count; ++i) {
         Move move = moves.At(i);
-        board.MoveChess(move.position, move.destination, move.postfix);
 
         std::cout << move.alias << "\n";
+        if (!board.MoveChess(move)) {
+        	std::cout << "Can't move chess \n";
+        	return 1;
+        }
         std::cout << std::endl;
 
         printer.PrintBoard();
