@@ -35,7 +35,7 @@ void Moves::ParseRegex(std::smatch* parts, Move* move1, Move* move2)
     move1->group = std::stoi(parts->str(1));
     move1->alias = parts->str(1) + ". " + parts->str(2);
     if (parts->str(3).size())
-    	move1->chess = parts->str(3).at(0);
+        move1->chess = parts->str(3).at(0);
 
     move1->position[1] = Ctoi(parts->str(4).at(0));
     move1->position[0] = 8 - std::stoi(parts->str(5));
@@ -52,7 +52,7 @@ void Moves::ParseRegex(std::smatch* parts, Move* move1, Move* move2)
     move2->group = std::stoi(parts->str(1));
     move2->alias = parts->str(1) + ". " + parts->str(10);
     if (parts->str(11).size())
-        	move1->chess = parts->str(11).at(0);
+        move1->chess = parts->str(11).at(0);
 
     move2->position[1] = Ctoi(parts->str(12).at(0));
     move2->position[0] = 8 - std::stoi(parts->str(13));

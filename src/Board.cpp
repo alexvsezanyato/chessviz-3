@@ -49,8 +49,8 @@ void Board::ArrangeChess()
 
 bool Board::MoveChess(Move move)
 {
-	short* from = move.position;
-	short* to = move.destination;
+    short* from = move.position;
+    short* to = move.destination;
 
     if (from[0] >= x || from[0] < 0)
         if (from[1] >= y || from[1] < 0)
@@ -62,10 +62,10 @@ bool Board::MoveChess(Move move)
 
     if (IsChess(move.chess))
         if (move.chess != board[from[0]][from[1]])
-        	return false;
+            return false;
 
     if (board[from[0]][from[1]] == '=')
-    	return false;
+        return false;
 
     if (IsChess(move.postfix)) {
         board[to[0]][to[1]] = move.postfix;

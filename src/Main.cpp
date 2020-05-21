@@ -22,8 +22,8 @@ int main(int argc, char* argv[])
 
         std::cout << move.alias << "\n";
         if (!board.MoveChess(move)) {
-        	std::cout << "Can't move chess \n";
-        	return 1;
+            std::cout << "Can't move chess \n";
+            return 1;
         }
         std::cout << std::endl;
 

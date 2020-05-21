@@ -1,8 +1,8 @@
 #pragma once
 
+#include "Move.h"
 #include <cctype>
 #include <vector>
-#include "Move.h"
 
 class Board {
 public:
