@@ -2,14 +2,14 @@
 
 #include <cctype>
 #include <vector>
+#include "Move.h"
 
 class Board {
 public:
     Board();
     ~Board();
 
-    bool MoveChess(short* from, short* to, char postfix);
-    bool MoveChess(short* from, short* to);
+    bool MoveChess(Move move);
 
     short x, y;
     char** board;
