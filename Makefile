@@ -1,11 +1,16 @@
-all: chessviz
+# app
 
-chessviz: build/Main.o build/Board.o build/PlainBoardPrinter.o build/Moves.o
-	@g++ -Wall -Werror -o bin/chessviz \
-	build/Main.o \
-	build/Board.o \
-	build/PlainBoardPrinter.o \
-	build/Moves.o
+appName := chessviz
+
+objects := build/Main.o
+objects += build/Board.o
+objects += build/PlainBoardPrinter.o
+objects += build/Moves.o
+
+all: bin/${appName}
+
+bin/${appName}: ${objects}
+	@g++ -Wall -Werror -o bin/${appName} ${objects}
 
 build/Main.o: src/Main.cpp
 	@g++ -c -Wall -Werror -o build/Main.o \
@@ -26,10 +31,22 @@ build/Moves.o: src/Moves.cpp
 format:
 	clang-format -i src/*.cpp src/*.h
 
+clean:
+	@rm -f build/*
+	@rm -f bin/*
+
 install:
 	sudo install ./bin/chessviz /usr/local/bin
 
 uninstall:
 	sudo rm -rf /usr/local/bin/chessviz
 
-.PHONY: all install uninstall format
+test: 
+	@echo "Compiling tests ..."
+	@g++ -Wall -Werror -std=c++1z -Ithirdparty/googletest/include -Ithirdparty/googletest -o bin/${appName}-test \
+	thirdparty/googletest/lib/libgtest_main.a \
+	 thirdparty/googletest/src/gtest-all.cc \
+	test/MovesTest.cpp src/Moves.cpp -pthread \
+	&& echo "Done"
+
+.PHONY: all install uninstall format test
