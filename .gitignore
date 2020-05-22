@@ -32,5 +32,6 @@
 *.app
 bin/*
 
-# Idea
+# Other
 .idea
+.vscode
