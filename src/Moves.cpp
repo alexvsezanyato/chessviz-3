@@ -95,7 +95,7 @@ Move Moves::At(short position)
 Moves::Moves(std::string path)
 {
     this->path = path;
-    stream.open("Data");
+    stream.open(path);
 
     if (stream) {
         if (!Read())
