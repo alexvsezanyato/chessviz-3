@@ -9,5 +9,6 @@ compiler:
 dist: xenial
 
 script:
+  - make
   - make test && ./bin/chessviz-test
   - git ls-files src/ | xargs clang-format -i && git diff --exit-code
