@@ -2,15 +2,14 @@
 
 appName := chessviz
 
-objects := build/Main.o
 objects += build/Board.o
 objects += build/PlainBoardPrinter.o
 objects += build/Moves.o
 
 all: bin/${appName}
 
-bin/${appName}: ${objects}
-	@g++ -Wall -Werror -o bin/${appName} ${objects}
+bin/${appName}: build/Main.o ${objects}
+	@g++ -Wall -Werror -o bin/${appName} build/Main.o ${objects}
 
 build/Main.o: src/Main.cpp
 	@g++ -c -Wall -Werror -o build/Main.o \
@@ -41,12 +40,31 @@ install:
 uninstall:
 	sudo rm -rf /usr/local/bin/chessviz
 
-test: 
+# test
+
+testName := ${appName}-test
+
+testObjects := build/test/BoardTest.o
+testObjects += build/test/MovesTest.o
+
+gtestPath = thirdparty/googletest
+
+test: ${testObjects}
 	@echo "Compiling tests ..."
-	@g++ -Wall -Werror -std=c++1z -Ithirdparty/googletest/include -Ithirdparty/googletest -o bin/${appName}-test \
-	thirdparty/googletest/lib/libgtest_main.a \
-	 thirdparty/googletest/src/gtest-all.cc \
-	test/MovesTest.cpp src/Moves.cpp -pthread \
-	&& echo "Done"
+	@g++ -Wall -Werror -std=c++1z -o bin/${testName} \
+	 -I ${gtestPath}/include -I ${gtestPath} \
+	 ${gtestPath}/lib/libgtest_main.a \
+	 ${gtestPath}/src/gtest-all.cc \
+	 ${testObjects} ${objects} -pthread && echo "Done"
+
+build/test/BoardTest.o: test/BoardTest.cpp
+	@g++ -c -Wall -Werror -o build/test/BoardTest.o \
+	 -I ${gtestPath}/include -I ${gtestPath} -I src \
+	 test/BoardTest.cpp
+
+build/test/MovesTest.o: test/MovesTest.cpp
+	@g++ -c -Wall -Werror -o build/test/MovesTest.o \
+	 -I ${gtestPath}/include -I ${gtestPath} -I src \
+	 test/MovesTest.cpp
 
 .PHONY: all install uninstall format test
