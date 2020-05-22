@@ -6,7 +6,7 @@
 #include <string>
 // ..
 
-short Moves::Ctoi(char position)
+short Moves::ChessCtoi(char position)
 {
     switch (position) {
     case 'a':
@@ -37,10 +37,10 @@ void Moves::ParseRegex(std::smatch* parts, Move* move1, Move* move2)
     if (parts->str(3).size())
         move1->chess = parts->str(3).at(0);
 
-    move1->position[1] = Ctoi(parts->str(4).at(0));
+    move1->position[1] = Moves::ChessCtoi(parts->str(4).at(0));
     move1->position[0] = 8 - std::stoi(parts->str(5));
     move1->type = parts->str(6).at(0);
-    move1->destination[1] = Ctoi(parts->str(7).at(0));
+    move1->destination[1] = Moves::ChessCtoi(parts->str(7).at(0));
     move1->destination[0] = 8 - std::stoi(parts->str(8));
     if (parts->str(9).size())
         move1->postfix = parts->str(9).at(0);
@@ -54,10 +54,10 @@ void Moves::ParseRegex(std::smatch* parts, Move* move1, Move* move2)
     if (parts->str(11).size())
         move1->chess = parts->str(11).at(0);
 
-    move2->position[1] = Ctoi(parts->str(12).at(0));
+    move2->position[1] = Moves::ChessCtoi(parts->str(12).at(0));
     move2->position[0] = 8 - std::stoi(parts->str(13));
     move2->type = parts->str(14).at(0);
-    move2->destination[1] = Ctoi(parts->str(15).at(0));
+    move2->destination[1] = Moves::ChessCtoi(parts->str(15).at(0));
     move2->destination[0] = 8 - std::stoi(parts->str(16));
     if (parts->str(17).size())
         move2->postfix = parts->str(17).at(0);

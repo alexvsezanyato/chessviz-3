@@ -13,7 +13,7 @@ public:
     bool Read();
     void ParseRegex(std::smatch* parts, Move* move1, Move* move2);
     Move At(short position);
-    static short Ctoi(char position);
+    static short ChessCtoi(char position);
 
     short count = 0;
 
