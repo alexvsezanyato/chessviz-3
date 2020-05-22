@@ -10,6 +10,7 @@ public:
     ~Board();
 
     bool MoveChess(Move move);
+    bool IsChess(char symbol);
 
     short x, y;
     char** board;

@@ -1,7 +1,7 @@
 #include "Board.h"
 #include <iostream>
 
-bool IsChess(char symbol)
+bool Board::IsChess(char symbol)
 {
     switch (symbol) {
     case 'K':
