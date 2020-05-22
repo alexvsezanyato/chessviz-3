@@ -30,7 +30,7 @@
 *.exe
 *.out
 *.app
-chessviz
+bin/*
 
 # Idea
 .idea
