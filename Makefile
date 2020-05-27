@@ -67,4 +67,4 @@ build/test/MovesTest.o: test/MovesTest.cpp
 	 -I ${gtestPath}/include -I ${gtestPath} -I src \
 	 test/MovesTest.cpp
 
-.PHONY: all install uninstall format test
+.PHONY: all install uninstall clean format test
